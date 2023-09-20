@@ -26,13 +26,20 @@ class DiffList extends StatelessWidget {
         appBar: AppBar(
           title: const Text(title),
         ),
-        body: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            final item = items[index];
-            return ListTile(
-              title: item.buildTitle(context),
-              subtitle: item.buildSubtitle(context),
+        body: OrientationBuilder(
+          builder: (context, orientation) {
+            return ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return ListTile(
+                  title: item.buildTitle(context),
+                  subtitle: item.buildSubtitle(context),
+                  textColor: orientation == Orientation.portrait
+                      ? Colors.black
+                      : Colors.red,
+                );
+              },
             );
           },
         ),

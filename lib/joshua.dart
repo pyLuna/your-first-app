@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:provider/provider.dart';
+import 'package:your_first_app/joshuawidgets/adaptive_layoutjjc.dart';
+import 'package:your_first_app/joshuawidgets/app_themejjc.dart';
+import 'package:your_first_app/joshuawidgets/favoritesjjc.dart';
+import 'package:your_first_app/joshuawidgets/focused_widget.dart';
+import 'package:your_first_app/joshuawidgets/font_variation.dart';
+import 'package:your_first_app/joshuawidgets/image_internet.dart';
 import 'package:your_first_app/joshuawidgets/parallaxlistjjc.dart';
+import 'package:your_first_app/joshuawidgets/return_data.dart';
+import 'package:your_first_app/joshuawidgets/send_data.dart';
+import 'package:your_first_app/joshuawidgets/snackbar_demo.dart';
+import 'package:your_first_app/joshuawidgets/swipe_dismiss.dart';
 import 'package:your_first_app/main.dart';
 import 'joshuawidgets/difflisttypesjjc.dart';
+import 'joshuawidgets/draggable_ui.dart';
+import 'joshuawidgets/gesture_tap.dart';
 import 'joshuawidgets/layoutjjc.dart';
 import 'joshuawidgets/listviewjjc.dart';
 import 'joshuawidgets/horizontallistjjc.dart';
 import 'joshuawidgets/gridlistjjc.dart';
+import 'joshuawidgets/interactivity.dart';
+import 'joshuawidgets/playpause_vid.dart';
+import 'joshuawidgets/shortcuts.dart';
 import 'joshuawidgets/spacedlistjjc.dart';
 import 'joshuawidgets/longlistjjc.dart';
 import 'joshuawidgets/floatingappbarjjc.dart';
+import 'joshuawidgets/touch_ripple.dart';
 
 void main() {
   runApp(const JoshuaPage());
@@ -26,8 +42,11 @@ class JoshuaPage extends StatelessWidget {
       child: MaterialApp(
         title: 'Name App',
         theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange)),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blueAccent,
+          ),
+        ),
         home: const MyHomePage(),
       ),
     );
@@ -123,6 +142,49 @@ class _MyHomePageState extends State<MyHomePage> {
       case 10:
         page = const ParallaxList();
         break;
+      case 11:
+        page = const Adaptive();
+        break;
+      case 12:
+        page = const AppTheme();
+        break;
+      case 13:
+        page = const Variation();
+        break;
+      case 14:
+        page = const Interactivity();
+      case 15:
+        page = const GestureTap();
+        break;
+      case 16:
+        page = const DraggableUI();
+      case 17:
+        page = const TouchRipple();
+        break;
+      case 18:
+        page = const SwipeDismiss();
+        break;
+      case 19:
+        page = const SnackBarDemo();
+        break;
+      case 20:
+        page = const ShortCuts();
+        break;
+      case 21:
+        page = const FocusedWidget();
+        break;
+      case 22:
+        page = const ImageViewer();
+        break;
+      case 23:
+        page = const VideoDemo();
+        break;
+      case 24:
+        page = const SendDataToScreen();
+        break;
+      case 25:
+        page = const ReturnHomeScreen();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -130,6 +192,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: Theme.of(context).colorScheme.secondary,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
+              }),
           title: const Text('Joshua'),
           actions: <Widget>[
             IconButton(
@@ -198,6 +269,66 @@ class _MyHomePageState extends State<MyHomePage> {
                             icon: Icon(Icons.image),
                             label: Text('Parallax Items'),
                           ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.aspect_ratio),
+                            label: Text('Adaptive Layout'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.design_services),
+                            label: Text('App Theme'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.font_download),
+                            label: Text('Font Variation'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.graphic_eq),
+                            label: Text('Shaders'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.fingerprint),
+                            label: Text('Gesture Tap'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.drag_handle),
+                            label: Text('Draggable ui'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.touch_app),
+                            label: Text('Touch Ripple'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.swipe),
+                            label: Text('Dismiss on Swipe'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.notifications_active),
+                            label: Text('Snackbar'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.keyboard),
+                            label: Text('Shortcuts'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.center_focus_strong_rounded),
+                            label: Text('Focused Widget'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.image_search),
+                            label: Text('Focused Widget'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.movie),
+                            label: Text('Video Demo'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.send),
+                            label: Text('Send data to another'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.repeat_rounded),
+                            label: Text('Return data'),
+                          ),
                         ],
                         selectedIndex: selectedIndex,
                         onDestinationSelected: (value) {
@@ -225,190 +356,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 // text generator, index = 0
-class GeneratorPage extends StatelessWidget {
-  const GeneratorPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Expanded(
-            flex: 3,
-            child: HistoryListView(),
-          ),
-          const SizedBox(height: 10),
-          BigCard(pair: pair),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: const Text('Like'),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  appState.addWord();
-                  appState.getNext();
-                },
-                child: const Text('Next'),
-              ),
-            ],
-          ),
-          const Spacer(flex: 2),
-        ],
-      ),
-    );
-  }
-}
-
-class HistoryListView extends StatefulWidget {
-  const HistoryListView({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _HistoryListViewState();
-}
-
-class _HistoryListViewState extends State<HistoryListView> {
-  final _key = GlobalKey();
-
-  static const Gradient _maskingGradient = LinearGradient(
-      colors: [Colors.transparent, Colors.black],
-      stops: [0.0, 0.5],
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter);
-
-  @override
-  Widget build(BuildContext context) {
-    final appState = context.watch<MyAppState>();
-    appState.historyListKey = _key;
-
-    return ShaderMask(
-      shaderCallback: (bounds) => _maskingGradient.createShader(bounds),
-      blendMode: BlendMode.dstIn,
-      child: AnimatedList(
-        key: _key,
-        reverse: true,
-        padding: const EdgeInsets.only(top: 100),
-        initialItemCount: appState.history.length,
-        itemBuilder: (context, index, animation) {
-          final pair = appState.history[index];
-          return SizeTransition(
-            sizeFactor: animation,
-            child: Center(
-                child: TextButton.icon(
-                    onPressed: () {
-                      appState.toggleFavorite(pair);
-                    },
-                    icon: appState.favorites.contains(pair)
-                        ? const Icon(Icons.favorite, size: 12)
-                        : const SizedBox(),
-                    label: Text(
-                      pair.asLowerCase,
-                      semanticsLabel: pair.asPascalCase,
-                    ))),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// big card display
-class BigCard extends StatelessWidget {
-  const BigCard({
-    super.key,
-    required this.pair,
-  });
-
-  final WordPair pair;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    final style = theme.textTheme.displayMedium!
-        .copyWith(color: theme.colorScheme.onPrimary);
-
-    return Card(
-      color: theme.colorScheme.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: AnimatedSize(
-          duration: const Duration(milliseconds: 200),
-          child: MergeSemantics(
-              child: Wrap(
-            children: [
-              Text(pair.first,
-                  style: style.copyWith(fontWeight: FontWeight.w200)),
-              Text(pair.second,
-                  style: style.copyWith(fontWeight: FontWeight.bold)),
-            ],
-          )),
-        ),
-      ),
-    );
-  }
-}
-
-// favorites tab, index = 1
-class FavoritesPage extends StatelessWidget {
-  const FavoritesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return const Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        Expanded(
-            child: GridView(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 400, childAspectRatio: 400 / 80),
-          children: [
-            for (var pair in appState.favorites)
-              ListTile(
-                  leading: IconButton(
-                      icon: const Icon(Icons.delete_outlined),
-                      tooltip: 'Remove from favorites',
-                      onPressed: () {
-                        appState.removeFavorite(pair);
-                      }),
-                  title: Text(
-                    pair.asLowerCase,
-                    semanticsLabel: pair.asPascalCase,
-                  ))
-          ],
-        )),
-      ],
-    );
-  }
+PreferredSizeWidget appBarBuilder(String title, bool? isCenter) {
+  return AppBar(
+    title: Text(title),
+    centerTitle: isCenter,
+    elevation: 1,
+  );
 }

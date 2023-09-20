@@ -19,25 +19,6 @@ class ParallaxList extends StatelessWidget {
   }
 }
 
-class ParallaxItem extends StatelessWidget {
-  const ParallaxItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          for (final location in locations)
-            LocationListItem(
-                imageUrl: location.imageUrl,
-                name: location.name,
-                country: location.place)
-        ],
-      ),
-    );
-  }
-}
-
 class LocationListItem extends StatelessWidget {
   LocationListItem({
     super.key,
@@ -280,6 +261,25 @@ class RenderParallax extends RenderBox
       (background.parentData as ParallaxParentData).offset +
           offset +
           Offset(0.0, childRect.top),
+    );
+  }
+}
+
+class ParallaxItem extends StatelessWidget {
+  const ParallaxItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          for (final location in locations)
+            LocationListItem(
+                imageUrl: location.imageUrl,
+                name: location.name,
+                country: location.place)
+        ],
+      ),
     );
   }
 }
