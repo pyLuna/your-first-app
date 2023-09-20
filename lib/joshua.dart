@@ -4,8 +4,13 @@ import 'package:provider/provider.dart';
 import 'package:your_first_app/joshuawidgets/adaptive_layoutjjc.dart';
 import 'package:your_first_app/joshuawidgets/app_themejjc.dart';
 import 'package:your_first_app/joshuawidgets/favoritesjjc.dart';
+import 'package:your_first_app/joshuawidgets/focused_widget.dart';
 import 'package:your_first_app/joshuawidgets/font_variation.dart';
+import 'package:your_first_app/joshuawidgets/image_internet.dart';
 import 'package:your_first_app/joshuawidgets/parallaxlistjjc.dart';
+import 'package:your_first_app/joshuawidgets/return_data.dart';
+import 'package:your_first_app/joshuawidgets/send_data.dart';
+import 'package:your_first_app/joshuawidgets/snackbar_demo.dart';
 import 'package:your_first_app/joshuawidgets/swipe_dismiss.dart';
 import 'package:your_first_app/main.dart';
 import 'joshuawidgets/difflisttypesjjc.dart';
@@ -16,6 +21,8 @@ import 'joshuawidgets/listviewjjc.dart';
 import 'joshuawidgets/horizontallistjjc.dart';
 import 'joshuawidgets/gridlistjjc.dart';
 import 'joshuawidgets/interactivity.dart';
+import 'joshuawidgets/playpause_vid.dart';
+import 'joshuawidgets/shortcuts.dart';
 import 'joshuawidgets/spacedlistjjc.dart';
 import 'joshuawidgets/longlistjjc.dart';
 import 'joshuawidgets/floatingappbarjjc.dart';
@@ -157,6 +164,27 @@ class _MyHomePageState extends State<MyHomePage> {
       case 18:
         page = const SwipeDismiss();
         break;
+      case 19:
+        page = const SnackBarDemo();
+        break;
+      case 20:
+        page = const ShortCuts();
+        break;
+      case 21:
+        page = const FocusedWidget();
+        break;
+      case 22:
+        page = const ImageViewer();
+        break;
+      case 23:
+        page = const VideoDemo();
+        break;
+      case 24:
+        page = const SendDataToScreen();
+        break;
+      case 25:
+        page = const ReturnHomeScreen();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -272,6 +300,34 @@ class _MyHomePageState extends State<MyHomePage> {
                           NavigationRailDestination(
                             icon: Icon(Icons.swipe),
                             label: Text('Dismiss on Swipe'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.notifications_active),
+                            label: Text('Snackbar'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.keyboard),
+                            label: Text('Shortcuts'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.center_focus_strong_rounded),
+                            label: Text('Focused Widget'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.image_search),
+                            label: Text('Focused Widget'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.movie),
+                            label: Text('Video Demo'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.send),
+                            label: Text('Send data to another'),
+                          ),
+                          NavigationRailDestination(
+                            icon: Icon(Icons.repeat_rounded),
+                            label: Text('Return data'),
                           ),
                         ],
                         selectedIndex: selectedIndex,
